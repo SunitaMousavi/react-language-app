@@ -1,7 +1,12 @@
 import React from "react";
 import "./App.css";
+import Flashcards from "./Flashcards";
 
-function App() {
-  return <div className="App">Hello</div>;
+export default function App() {
+  return (
+    <div className="App">
+      Hello
+      <Flashcards />
+    </div>
+  );
 }
-export default App;
