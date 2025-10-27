@@ -1,20 +1,20 @@
-{
-  "B2": [
-    {
-      "word": "J’ai besoin de voir un médecin, s’il vous plaît.",
-       "translation": "I need to see a doctor, please."
-    },
-    {
-      "word": "Le médecin parle-t-il anglais ?",
-       "translation": "Does the doctor speak English?"
-    },
-    {
-      "word": "Je voudrais donner rendez-vous chez le médecin.",
-       "translation": "I’d like to make an appointment with the doctor."
-    },
-    {
-      "word": "…as soon as possible",
-       "translation": "dès que possible"
-    }
-  ]
-}
+[
+  {
+    "front": "Bonjour",
+    "back": "Hello",
+    "context": "Greeting",
+    "example": "Bonjour, comment ça va?"
+  },
+  {
+    "front": "Merci",
+    "back": "Thank you",
+    "context": "Courtesy",
+    "example": "Merci beaucoup!"
+  },
+  {
+    "front": "Maison",
+    "back": "House",
+    "context": "Places",
+    "example": "J'habite dans une grande maison."
+  }
+]

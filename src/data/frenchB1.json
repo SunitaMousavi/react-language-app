@@ -1,20 +1,20 @@
-{
-  "B1": [
-    {
-      "word": "les mathématiques",
-       "translation": "math"
-    },
-    {
-      "word": "l’algèbre",
-       "translation": "algebra"
-    },
-    {
-      "word": "la biologie",
-       "translation": "biology"
-    },
-    {
-      "word": "le calcul infinitésimal",
-       "translation": "calculus"
-    }
-  ]
-}
+[
+  {
+    "front": "Bonjour",
+    "back": "Hello",
+    "context": "Greeting",
+    "example": "Bonjour, comment ça va?"
+  },
+  {
+    "front": "Merci",
+    "back": "Thank you",
+    "context": "Courtesy",
+    "example": "Merci beaucoup!"
+  },
+  {
+    "front": "Maison",
+    "back": "House",
+    "context": "Places",
+    "example": "J'habite dans une grande maison."
+  }
+]

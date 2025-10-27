@@ -1,36 +1,20 @@
-{
-  "A1": [
-    {
-      "word": "Bonjour",
-       "translation": "Hello, good morning!"
-    },
-    {
-      "word": "Salut",
-       "translation": "Hi!/bye"
-    },
-    {
-      "word": "Ça va?",
-       "translation": "How’s it going?"
-    },
-    {
-      "word": "Comment ça va ?",
-       "translation": "How’s it going?"
-    },
-    {
-      "word": "Comment vas-tu ?",
-       "translation": "How are you? (informal)"
-    },
-    {
-      "word": "Comment allez-vous ?",
-       "translation": "How are you? (formal, plural)"
-    },
-        {
-      "word": "Bon après-midi",
-       "translation": "Good afternoon!"
-    },
-        {
-      "word": "Bonsoir ",
-       "translation": "Good evening."
-    }
-  ]
-}
+[
+  {
+    "front": "Bonjour",
+    "back": "Hello",
+    "context": "Greeting",
+    "example": "Bonjour, comment ça va?"
+  },
+  {
+    "front": "Merci",
+    "back": "Thank you",
+    "context": "Courtesy",
+    "example": "Merci beaucoup!"
+  },
+  {
+    "front": "Maison",
+    "back": "House",
+    "context": "Places",
+    "example": "J'habite dans une grande maison."
+  }
+]

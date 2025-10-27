@@ -1,10 +1,20 @@
-import React from "react";
-import frenchA1 from "./data/frenchA1.json";
-
-export default function Flashcards() {
-  const VOCAB_DATABASE = {
-    A1: frenchA1,
-  };
-
-  return <div className="Flashcards">Hello from Flashcards</div>;
-}
+import React, { useEffect, useState } from "react";
+import {
+  BookOpen,
+  Brain,
+  TrendingUp,
+  ChevronRight,
+  RotateCcw,
+  Check,
+  X,
+  User,
+  LogOut,
+} from "lucide-react";
+import { addCard, getAllCards, updateCard } from "./services/firestoreService";
+import { auth } from "./firebase";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+} from "firebase/auth";

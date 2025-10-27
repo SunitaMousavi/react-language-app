@@ -1,20 +1,20 @@
-{
-  "A2": [
-    {
-      "word": "Je cherche un magasin pour…",
-       "translation": "I’m looking for a store for…"
-    },
-    {
-      "word": "Où est-ce qu’il y a…?",
-       "translation": "Where is there…?"
-    },
-    {
-      "word": "Où sont les magasins ?",
-       "translation": "Where are the stores?"
-    },
-    {
-      "word": "Quelles sont vos heures d’ouverture ?",
-       "translation": "What are your business hours?"
-    }
-  ]
-}
+[
+  {
+    "front": "Bonjour",
+    "back": "Hello",
+    "context": "Greeting",
+    "example": "Bonjour, comment ça va?"
+  },
+  {
+    "front": "Merci",
+    "back": "Thank you",
+    "context": "Courtesy",
+    "example": "Merci beaucoup!"
+  },
+  {
+    "front": "Maison",
+    "back": "House",
+    "context": "Places",
+    "example": "J'habite dans une grande maison."
+  }
+]
