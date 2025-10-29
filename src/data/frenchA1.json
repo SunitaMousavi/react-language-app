@@ -1,20 +1,26 @@
 [
   {
-    "front": "Bonjour",
-    "back": "Hello",
-    "context": "Greeting",
-    "example": "Bonjour, comment ça va?"
+    "id": "1",
+    "word": "bonjour",
+    "definition": "hello / good day",
+    "cefrLevel": "A1",
+    "example": "Bonjour, comment ça va ?",
+    "partOfSpeech": "interjection"
   },
   {
-    "front": "Merci",
-    "back": "Thank you",
-    "context": "Courtesy",
-    "example": "Merci beaucoup!"
+    "id": "2",
+    "word": "merci",
+    "definition": "thank you",
+    "cefrLevel": "A1",
+    "example": "Merci pour votre aide.",
+    "partOfSpeech": "interjection"
   },
   {
-    "front": "Maison",
-    "back": "House",
-    "context": "Places",
-    "example": "J'habite dans une grande maison."
+    "id": "3",
+    "word": "maison",
+    "definition": "house",
+    "cefrLevel": "A1",
+    "example": "Ma maison est près de l'école.",
+    "partOfSpeech": "noun"
   }
 ]

@@ -1,20 +1,20 @@
 [
   {
-    "front": "Bonjour",
-    "back": "Hello",
-    "context": "Greeting",
+    "id": 1,
+    "word": "Bonjour",
+    "translation": "Hello",
     "example": "Bonjour, comment ça va?"
   },
   {
-    "front": "Merci",
-    "back": "Thank you",
-    "context": "Courtesy",
+    "id": 2,
+    "word": "Merci",
+    "translation": "Thank you",
     "example": "Merci beaucoup!"
   },
   {
-    "front": "Maison",
-    "back": "House",
-    "context": "Places",
+    "id": 3,
+    "word": "Maison",
+    "translation": "House",
     "example": "J'habite dans une grande maison."
   }
 ]
