@@ -2,17 +2,15 @@ import React, { useState } from "react";
 import { useAuth } from "../contexts/useAuth";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function Signup() {
+export default function Login() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    confirmPassword: "",
   });
   const [formErrors, setFormErrors] = useState({});
-  const { signup, loginWithGoogle, authState, clearError } = useAuth();
+  const { login, loginWithGoogle, authState, clearError } = useAuth();
   const navigate = useNavigate();
 
-  // Input Change Handler
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -27,7 +25,6 @@ export default function Signup() {
     }
   };
 
-  // Form Validation Function
   const validateForm = () => {
     const errors = {};
 
@@ -39,21 +36,12 @@ export default function Signup() {
 
     if (!formData.password) {
       errors.password = "Password is required";
-    } else if (formData.password.length < 6) {
-      errors.password = "Password must be at least 6 characters";
-    }
-
-    if (!formData.confirmPassword) {
-      errors.confirmPassword = "Please confirm your password";
-    } else if (formData.password !== formData.confirmPassword) {
-      errors.confirmPassword = "Passwords do not match";
     }
 
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
 
-  // Email/Password Signup Handler
   const handleSubmit = async (e) => {
     e.preventDefault();
     clearError();
@@ -62,15 +50,14 @@ export default function Signup() {
     if (!validateForm()) return;
 
     try {
-      await signup(formData.email, formData.password);
+      await login(formData.email, formData.password);
       navigate("/");
     } catch (error) {
-      console.error("Signup failed:", error);
+      console.error("Login failed:", error);
     }
   };
 
-  // Google Signup Handler
-  const handleGoogleSignup = async () => {
+  const handleGoogleLogin = async () => {
     clearError();
     setFormErrors({});
 
@@ -78,20 +65,20 @@ export default function Signup() {
       await loginWithGoogle();
       navigate("/");
     } catch (error) {
-      console.error("Google signup failed:", error);
+      console.error("Google login failed:", error);
     }
   };
 
   const isFormDisabled =
-    authState.isSigningUp || authState.isSigningInWithGoogle;
+    authState.isLoggingIn || authState.isSigningInWithGoogle;
 
   return (
     <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-900">Create Account</h2>
-          <p className="text-gray-600 mt-2">Join us today</p>
+          <h2 className="text-3xl font-bold text-gray-900">Welcome Back</h2>
+          <p className="text-gray-600 mt-2">Sign in to your account</p>
         </div>
 
         {/* Error Display */}
@@ -108,15 +95,15 @@ export default function Signup() {
           </div>
         )}
 
-        {/* Google Signup Button */}
+        {/* Google Login Button */}
         <button
-          onClick={handleGoogleSignup}
+          onClick={handleGoogleLogin}
           disabled={isFormDisabled}
           className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-gray-300 rounded-lg text-gray-700 bg-white hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed mb-6">
           {authState.isSigningInWithGoogle ? (
             <>
               <div className="w-5 h-5 border-2 border-gray-400 border-t-transparent rounded-full animate-spin"></div>
-              Creating account...
+              Signing in with Google...
             </>
           ) : (
             <>
@@ -137,13 +124,13 @@ export default function Signup() {
                   fill="#EA4335"
                   d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
                 />
-              </svg>{" "}
-              Sign up with Google
+              </svg>
+              Continue with Google
             </>
           )}
         </button>
 
-        {/* Form Divider */}
+        {/* Divider */}
         <div className="relative mb-6">
           <div className="absolute inset-0 flex items-center">
             <div className="w-full border-t border-gray-300"></div>
@@ -155,7 +142,7 @@ export default function Signup() {
           </div>
         </div>
 
-        {/* Form Fields with Dynamic Styling */}
+        {/* Login Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Email Field */}
           <div>
@@ -197,66 +184,46 @@ export default function Signup() {
               className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 ${
                 formErrors.password ? "border-red-500" : "border-gray-300"
               } ${isFormDisabled ? "bg-gray-100 cursor-not-allowed" : ""}`}
-              placeholder="Create a password"
+              placeholder="Enter your password"
               disabled={isFormDisabled}
             />
             {formErrors.password && (
               <p className="mt-1 text-sm text-red-600">{formErrors.password}</p>
             )}
           </div>
-
-          {/* Confirm Password Field */}
-          <div>
-            <label
-              htmlFor="confirmPassword"
-              className="block text-sm font-medium text-gray-700 mb-1">
-              Confirm Password
-            </label>
-            <input
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 ${
-                formErrors.confirmPassword
-                  ? "border-red-500"
-                  : "border-gray-300"
-              } ${isFormDisabled ? "bg-gray-100 cursor-not-allowed" : ""}`}
-              placeholder="Confirm your password"
-              disabled={isFormDisabled}
-            />
-            {formErrors.confirmPassword && (
-              <p className="mt-1 text-sm text-red-600">
-                {formErrors.confirmPassword}
-              </p>
-            )}
+          {/* Forgot Password Link */}
+          <div className="text-right">
+            <Link
+              to="/forgot-password"
+              className="text-sm text-indigo-600 hover:text-indigo-500 font-medium transition-colors">
+              Forgot your password?
+            </Link>
           </div>
 
-          {/* Submit Button with Loading State */}
+          {/* Submit Button */}
           <button
             type="submit"
             disabled={isFormDisabled}
             className="w-full bg-linear-to-r from-indigo-600 to-purple-600 text-white py-3 px-4 rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2">
-            {authState.isSigningUp ? (
+            {authState.isLoggingIn ? (
               <>
                 <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                Create Account...
+                Signing In...
               </>
             ) : (
-              "Create Account"
+              "Sign In"
             )}
           </button>
         </form>
 
-        {/* Navigation Link */}
+        {/* Signup Link */}
         <div className="text-center mt-6">
           <p className="text-gray-600">
-            Already have an account?{" "}
+            Don't have an account?{" "}
             <Link
-              to="/login"
+              to="/signup"
               className="text-indigo-600 hover:text-indigo-500 font-semibold transition-colors">
-              Sign in
+              Sign up
             </Link>
           </p>
         </div>
