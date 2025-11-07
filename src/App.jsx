@@ -2,9 +2,14 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthProvider";
 import ProtectedRoute from "./contexts/ProtectedRoute";
-import Signup from "./components/Signup";
-import Login from "./components/Login";
-import Dashboard from "./components/Dashboard";
+
+import Landing from "./pages/LandingPage";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Dashboard from "./pages/Dashboard";
+import Study from "./pages/Study";
+
+import LayoutWrapper from "./components/LayoutWrapper";
 
 function App() {
   return (
@@ -12,26 +17,36 @@ function App() {
       <AuthProvider>
         <div className="App">
           <Routes>
-            {/* Public Routes */}
-            <Route path="/signup" element={<Signup />} />
+            {/* Public routes */}
+            <Route path="/" element={<Landing />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
 
-            {/* Protected Routes - Only accessible when logged in */}
+            {/* Protected routes */}
             <Route
-              path="/"
-              element={
-                <ProtectedRoute>
-                  <Dashboard />
-                </ProtectedRoute>
-              }
-            />
+              element={<LayoutWrapper />} // navbar only for logged-in users
+            >
+              <Route
+                path="/dashboard"
+                element={
+                  <ProtectedRoute>
+                    <Dashboard />
+                  </ProtectedRoute>
+                }
+              />
 
-            {/* Test Routes - Remove these after testing */}
-            <Route path="/signup-test" element={<Signup />} />
-            <Route path="/login-test" element={<Login />} />
+              <Route
+                path="/study"
+                element={
+                  <ProtectedRoute>
+                    <Study />
+                  </ProtectedRoute>
+                }
+              />
+            </Route>
 
-            {/* 404 Fallback */}
-            <Route path="*" element={<div>Page not found</div>} />
+            {/* 404 page */}
+            <Route path="*" element={<div>404 - Not Found</div>} />
           </Routes>
         </div>
       </AuthProvider>
